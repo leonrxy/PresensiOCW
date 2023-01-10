@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -121,7 +122,7 @@ while True:
 	options = webdriver.ChromeOptions()
 	options.add_argument('--headless')
 	options.add_argument('--disable-gpu')
-	driver = webdriver.Chrome(options=options)
+	driver = webdriver.Chrome(service=(ChromeDriverManager().install()),options=options)
 	wait = WebDriverWait(driver, timeout=10, ignored_exceptions=[ElementNotVisibleException, ElementNotSelectableException, NoSuchElementException])
 	Login()
 	for i in range(len(listMatkul)):
