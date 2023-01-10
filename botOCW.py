@@ -116,9 +116,11 @@ while True:
         os.system('clear')
     header()
     options = webdriver.ChromeOptions()
+    options.binary_location = "/usr/bin/google-chrome"
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
     serv = Service("/usr/bin/chromedriver")
     driver = webdriver.Chrome(service=serv, options=options)
     wait = WebDriverWait(driver, timeout=10)
