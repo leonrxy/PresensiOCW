@@ -34,14 +34,14 @@ password = "kawatan19"
 
 #Header
 def header():
-	print(Fore.LIGHTBLUE_EX+"╔════════════════════════════════════════════════════════════════════════════════════╗")
-	print(Fore.LIGHTBLUE_EX+"║ d8888b.  .d88b.  d888888b       .d88b.   .o88b. db   d8b   db                      ║")
-	print(Fore.LIGHTBLUE_EX+"║ 88  `8D .8P  Y8. `~~88~~'      .8P  Y8. d8P  Y8 88   I8I   88            _   ___   ║")
-	print(Fore.LIGHTBLUE_EX+"║ 88oooY' 88    88    88         88    88 8P      88   I8I   88   /\   /\ / | / _ \  ║")
-	print(Fore.LIGHTBLUE_EX+"║ 88~~~b. 88    88    88         88    88 8b      Y8   I8I   88   \ \ / / | || | | | ║")
-	print(Fore.LIGHTBLUE_EX+"║ 88   8D `8b  d8'    88         `8b  d8' Y8b  d8 `8b d8'8b d8'    \ V /  | || |_| | ║")
-	print(Fore.LIGHTBLUE_EX+"║ Y8888P'  `Y88P'     YP          `Y88P'   `Y88P'  `8b8' `8d8'      \_/   |_(_)___/  ║")
-	print(Fore.LIGHTBLUE_EX+"╚═══════════════════════════════════╣ By leonrxy ╠═══════════════════════════════════╝")    
+	print(Fore.LIGHTBLUE_EX+"======================================================================================")
+	print(Fore.LIGHTBLUE_EX+"| d8888b.  .d88b.  d888888b       .d88b.   .o88b. db   d8b   db                      |")
+	print(Fore.LIGHTBLUE_EX+"| 88  `8D .8P  Y8. `~~88~~'      .8P  Y8. d8P  Y8 88   I8I   88            _   ___   |")
+	print(Fore.LIGHTBLUE_EX+"| 88oooY' 88    88    88         88    88 8P      88   I8I   88   /\   /\ / | / _ \  |")
+	print(Fore.LIGHTBLUE_EX+"| 88~~~b. 88    88    88         88    88 8b      Y8   I8I   88   \ \ / / | || | | | |")
+	print(Fore.LIGHTBLUE_EX+"| 88   8D `8b  d8'    88         `8b  d8' Y8b  d8 `8b d8'8b d8'    \ V /  | || |_| | |")
+	print(Fore.LIGHTBLUE_EX+"| Y8888P'  `Y88P'     YP          `Y88P'   `Y88P'  `8b8' `8d8'      \_/   |_(_)___/  |")
+	print(Fore.LIGHTBLUE_EX+"===================================== By leonrxy =====================================")    
 
 	print(Fore.LIGHTYELLOW_EX + "BOT Auto Send Reminder Absensi")                                               
 
@@ -101,7 +101,6 @@ def CekAbsen(matkul,nama,i):
 	except TimeoutException:
 		print("Absensi Tidak ditemukan")
 	
-
 def Close():
 	driver.close()
 
@@ -122,7 +121,7 @@ while True:
 	options = webdriver.ChromeOptions()
 	options.add_argument('--headless')
 	options.add_argument('--disable-gpu')
-	driver = webdriver.Chrome(service=(ChromeDriverManager().install()),options=options)
+	driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
 	wait = WebDriverWait(driver, timeout=10, ignored_exceptions=[ElementNotVisibleException, ElementNotSelectableException, NoSuchElementException])
 	Login()
 	for i in range(len(listMatkul)):
@@ -130,7 +129,7 @@ while True:
 		current_time = time.strftime("%H:%M:%S", t)
 		print(Fore.LIGHTMAGENTA_EX+"["+current_time+"] "+Fore.LIGHTBLUE_EX + "Mengecek Absensi Matkul {}".format(listMatkul[i])+"...")
 		CekAbsen(linkMatkul[i],listMatkul[i],i)
-		print("════════════════════════════════════")
+		print("========================================")
 		time.sleep(3)
 	Close()
 	print(Fore.LIGHTYELLOW_EX + "Pause 5 Menit...")
