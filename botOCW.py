@@ -1,13 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import ElementNotSelectableException
-from selenium.common.exceptions import ElementNotVisibleException
-from selenium.common.exceptions import NoSuchElementException
 import time
 import os
 from datetime import date
@@ -67,7 +63,7 @@ def Login():
 
 def CekAbsen(matkul,nama,i):
 	#Cek Absen Matkul
-	wait = WebDriverWait(driver, timeout=10, ignored_exceptions=[ElementNotVisibleException, ElementNotSelectableException, NoSuchElementException])
+	wait = WebDriverWait(driver, timeout=10)
 	driver.get((matkul))
 	try:
 		wait.until(EC.presence_of_element_located((By.XPATH, "(//div[@class='panel panel-default'])[1]")))
@@ -121,8 +117,8 @@ while True:
 	options = webdriver.ChromeOptions()
 	options.add_argument('--headless')
 	options.add_argument('--disable-gpu')
-	driver = webdriver.Chrome("/usr/bin/chromedriver",options=options)
-	wait = WebDriverWait(driver, timeout=10, ignored_exceptions=[ElementNotVisibleException, ElementNotSelectableException, NoSuchElementException])
+	driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver",options=options)
+	wait = WebDriverWait(driver, timeout=10)
 	Login()
 	for i in range(len(listMatkul)):
 		t = time.localtime()
