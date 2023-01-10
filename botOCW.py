@@ -121,7 +121,7 @@ while True:
 	options = webdriver.ChromeOptions()
 	options.add_argument('--headless')
 	options.add_argument('--disable-gpu')
-	driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
+	driver = webdriver.Chrome("/usr/bin/chromedriver",options=options)
 	wait = WebDriverWait(driver, timeout=10, ignored_exceptions=[ElementNotVisibleException, ElementNotSelectableException, NoSuchElementException])
 	Login()
 	for i in range(len(listMatkul)):
